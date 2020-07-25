@@ -28,7 +28,7 @@ namespace Hangman_Game
 	    *
 	    * @param path = the path for the text file that contains the wordlist
 	    */
-        public void PopulateWith(String path)
+        public void PopulateWith(string path)
         {
 
             // If the text file exists...
@@ -60,7 +60,7 @@ namespace Hangman_Game
         {
             // Retrieve a random number within the range of the ArrayList size
             Random randomizer = new Random();
-            int randomIndex = randomizer.Next(representatives.Count());
+            int randomIndex = randomizer.Next(0, representatives.Count);
 
 
             // Use this number as an index to retrieve a respective element from the ArrayList
@@ -68,6 +68,18 @@ namespace Hangman_Game
             string secretWord = representatives[randomIndex];
 
             return secretWord;
+        }
+
+
+
+        /**
+	    * Method to retrieve the size of the wordlist of the respective category.
+	    *
+	    * @return the int representation of the size of the category's wordlist
+	    */
+        public int GetSize()
+        {
+            return representatives.Count;
         }
     }
 }
