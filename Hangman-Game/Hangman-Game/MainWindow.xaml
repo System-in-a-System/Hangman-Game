@@ -8,15 +8,20 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Image x:Name="hangmanImage" HorizontalAlignment="Left" Height="123" VerticalAlignment="Top" Width="121" Margin="305,246,0,0"/>
-        
-        <Label Content="SECRET WORD: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,58,0,0"/>
-        <TextBlock x:Name="secretWordBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="351,62,0,0" Height="26" Width="237"/>
-        
-        <Button x:Name="suggestLetterButton" Content="Suggest a letter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,122,0,0" Height="19"/>
-        <Button x:Name="suggestWordButton" Content="Suggest a word" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,146,0,0" Height="19"/>
-        <Button x:Name="backButton" Content="Back to the main menu" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,170,0,0" Height="24"/>
-        
+
+        <Label Content="SECRET WORD: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,72,0,0"/>
+        <TextBlock x:Name="secretWordBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="351,74,0,0" Height="26" Width="237"/>
+
+        <Button x:Name="suggestLetterButton" Content="Suggest a letter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,122,0,0" Height="19" Click="SuggestLetterButton_Click"/>
+        <Button x:Name="suggestWordButton" Content="Suggest a word" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,146,0,0" Height="19" Click="SuggestWordButton_Click"/>
+
         <TextBox x:Name="letterBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="453,123,0,0"/>
         <TextBox x:Name="wordBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="453,151,0,0"/>
+
+        <Button x:Name="countriesButton" Content="Play countries" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,34,0,0" Height="19"/>
+        <Button x:Name="capitalsButton" Content="Play capitals" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="453,34,0,0" Height="19"/>
+        <Button x:Name="continentsButton" Content="Play continents" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="150,34,0,0" Height="19" Click="ContinentsButton_Click"/>
+        
+        <Label x:Name="pr" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,228,0,0" RenderTransformOrigin="1.198,1.677"/>
     </Grid>
 </Window>
