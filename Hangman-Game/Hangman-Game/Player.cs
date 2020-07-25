@@ -61,7 +61,7 @@ namespace Hangman_Game
          *
          * @param theScore = the current score of the current player within the current round
          */
-        public void recordScore(int theScore) 
+        public void RecordScore(int theScore) 
         {
 			score = theScore;
         }
@@ -73,7 +73,7 @@ namespace Hangman_Game
 	    *
 	    * @return the int value of the player's score
 	    */
-        public int retrieveScore()
+        public int RetrieveScore()
         {
             return score;
         }
