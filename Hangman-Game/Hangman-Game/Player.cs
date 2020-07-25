@@ -21,7 +21,7 @@ namespace Hangman_Game
          *
          * @param nameInput - the name of the player 
          */
-        public Player(String nameInput)
+        public Player(string nameInput)
         {
             setName(nameInput);
         }
