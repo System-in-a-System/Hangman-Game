@@ -116,6 +116,12 @@ namespace Hangman_Game
                 secretWord = "X";
 		
 	    }
+
+
+        public string GetSecretWord()
+        {
+            return secretWord;
+        }
 	
 	
 	

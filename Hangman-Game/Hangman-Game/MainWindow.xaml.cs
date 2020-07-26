@@ -171,6 +171,9 @@ namespace Hangman_Game
                     {
                         pr.Content = "The man has been hanged...";
 
+                        // Reveal the secret word
+                        l.Content = "secret word: " + currentRound.GetSecretWord();
+
                         // Hide the elements of player interface
                         suggestLetterButton.Visibility = Visibility.Hidden;
                         letterBox.Visibility = Visibility.Hidden;
@@ -197,6 +200,7 @@ namespace Hangman_Game
             {
                 // Retrieve the suggested word
                 string suggestedWord = wordBox.Text;
+        
 
                 // If the suggested word is correct...
                 if(currentRound.IsTheSecretWord(suggestedWord))
@@ -221,6 +225,9 @@ namespace Hangman_Game
                     else
                     {
                         pr.Content = "The man has been hanged...";
+
+                        // Reveal the secret word
+                        l.Content = "secret word: " + currentRound.GetSecretWord();
 
                         // Hide the elements of player interface
                         suggestLetterButton.Visibility = Visibility.Hidden;

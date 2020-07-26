@@ -42,5 +42,7 @@
         </Button>
 
         <Label x:Name="pr" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,291,0,0" RenderTransformOrigin="1.198,1.677" Width="250"/>
+        
+        <Label x:Name="l" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,129,0,0"/>
     </Grid>
 </Window>
