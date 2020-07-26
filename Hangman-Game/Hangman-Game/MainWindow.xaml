@@ -7,21 +7,40 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Image x:Name="hangmanImage" HorizontalAlignment="Left" Height="123" VerticalAlignment="Top" Width="121" Margin="305,246,0,0"/>
 
-        <Label Content="SECRET WORD: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,72,0,0"/>
-        <TextBlock x:Name="secretWordBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="351,74,0,0" Height="26" Width="237"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/bg.jpg"></ImageBrush>
+        </Grid.Background>
 
-        <Button x:Name="suggestLetterButton" Content="Suggest a letter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,122,0,0" Height="19" Click="SuggestLetterButton_Click"/>
-        <Button x:Name="suggestWordButton" Content="Suggest a word" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,146,0,0" Height="19" Click="SuggestWordButton_Click"/>
+        <Image x:Name="hangmanImage" HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="165" Margin="453,179,0,0" RenderTransformOrigin="1.891,0.302"/>
 
-        <TextBox x:Name="letterBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="453,123,0,0"/>
-        <TextBox x:Name="wordBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="453,151,0,0"/>
+        <Label Content="SECRET WORD: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,106,0,0" FontFamily="Stencil"/>
+        <TextBlock x:Name="secretWordBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="351,106,0,0" Height="26" Width="237" FontFamily="Stencil" FontSize="20" FontStretch="ExtraExpanded"/>
 
-        <Button x:Name="countriesButton" Content="Play countries" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,34,0,0" Height="19"/>
-        <Button x:Name="capitalsButton" Content="Play capitals" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="453,34,0,0" Height="19"/>
-        <Button x:Name="continentsButton" Content="Play continents" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="150,34,0,0" Height="19" Click="ContinentsButton_Click"/>
-        
-        <Label x:Name="pr" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,228,0,0" RenderTransformOrigin="1.198,1.677"/>
+        <Button x:Name="suggestLetterButton" Content="Suggest a letter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,210,0,0" Height="19" Click="SuggestLetterButton_Click" Background="#FFF6EBE1" FontFamily="Stencil" FontSize="11" FontStyle="Italic"/>
+        <Button x:Name="suggestWordButton" Content="Suggest a word" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,246,0,0" Height="19" Click="SuggestWordButton_Click" Background="#FFF6EBE1" FontFamily="Stencil" FontStyle="Italic" FontSize="11"/>
+
+        <TextBox x:Name="letterBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" Margin="266,208,0,0" FontFamily="Stencil" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="wordBox" HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="176,246,0,0" FontSize="11" FontFamily="Stencil" FontStyle="Italic"/>
+
+        <Button x:Name="countriesButton" Content="Play countries" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,30,0,0" Height="19" Click="CountriesButton_Click" Background="#FFEED3BA" FontFamily="Stencil">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="1" Opacity="0.35"/>
+            </Button.Effect>
+        </Button>
+
+        <Button x:Name="capitalsButton" Content="Play capitals" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="453,30,0,0" Height="19" Click="CapitalsButton_Click" Background="#FFEED3BA" FontFamily="Stencil">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="1" Opacity="0.5"/>
+            </Button.Effect>
+        </Button>
+
+        <Button x:Name="continentsButton" Content="Play continents" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="150,30,0,0" Height="19" Click="ContinentsButton_Click" Background="#FFEED3BA" FontFamily="Stencil">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="1" Opacity="0.5"/>
+            </Button.Effect>
+        </Button>
+
+        <Label x:Name="pr" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,291,0,0" RenderTransformOrigin="1.198,1.677" Width="250"/>
     </Grid>
 </Window>
