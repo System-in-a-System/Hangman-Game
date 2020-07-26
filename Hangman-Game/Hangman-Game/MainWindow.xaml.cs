@@ -49,7 +49,7 @@ namespace Hangman_Game
 
             // Instantiate a category
             Category categoryContinents = new Category();
-            categoryContinents.PopulateWith("continents.txt");
+            categoryContinents.PopulateWith("resources/continents.txt");
 
             
             // Display the elements of player interface
@@ -82,7 +82,7 @@ namespace Hangman_Game
 
             // Instantiate a category
             Category categoryCountries = new Category();
-            categoryCountries.PopulateWith("countries.txt");
+            categoryCountries.PopulateWith("resources/countries.txt");
 
             
             // Display the elements of player interface
@@ -114,7 +114,7 @@ namespace Hangman_Game
 
             // Instantiate a category
             Category categoryCapitals = new Category();
-            categoryCapitals.PopulateWith("capitals.txt");
+            categoryCapitals.PopulateWith("resources/capitals.txt");
 
             
             // Display the elements of player interface
@@ -207,6 +207,15 @@ namespace Hangman_Game
                 {
                     // stop the hanging process and save the Hanging Man
                     pr.Content = "The man has been saved!";
+
+                    // Display the word on the board
+                    secretWordBlock.Text = currentRound.GetSecretWord();
+
+                    // Hide the elements of player interface
+                    suggestLetterButton.Visibility = Visibility.Hidden;
+                    letterBox.Visibility = Visibility.Hidden;
+                    suggestWordButton.Visibility = Visibility.Hidden;
+                    wordBox.Visibility = Visibility.Hidden;
                 }
 
                 // If the word is NOT the word...
