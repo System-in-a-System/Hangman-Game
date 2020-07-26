@@ -39,6 +39,10 @@ namespace Hangman_Game
 
         private void ContinentsButton_Click(object sender, RoutedEventArgs e)
         {
+
+            // Reset the hanging progress
+            hangingProgress = 0;
+            
             
             // Instantiate a new player
             Player player = new Player("TestPlayer");
@@ -47,12 +51,14 @@ namespace Hangman_Game
             Category categoryContinents = new Category();
             categoryContinents.PopulateWith("continents.txt");
 
+            
             // Display the elements of player interface
             suggestLetterButton.Visibility = Visibility.Visible;
             letterBox.Visibility = Visibility.Visible;
             suggestWordButton.Visibility = Visibility.Visible;
             wordBox.Visibility = Visibility.Visible;
 
+            
             // Start a game round
             GameRound roundOnContinents = new GameRound(player, categoryContinents);
             currentRound = roundOnContinents;
@@ -67,6 +73,10 @@ namespace Hangman_Game
 
         private void CountriesButton_Click(object sender, RoutedEventArgs e)
         {
+            // Reset the hanging progress
+            hangingProgress = 0;
+
+            
             // Instantiate a new player
             Player player = new Player("TestPlayer");
 
@@ -74,12 +84,14 @@ namespace Hangman_Game
             Category categoryCountries = new Category();
             categoryCountries.PopulateWith("countries.txt");
 
+            
             // Display the elements of player interface
             suggestLetterButton.Visibility = Visibility.Visible;
             letterBox.Visibility = Visibility.Visible;
             suggestWordButton.Visibility = Visibility.Visible;
             wordBox.Visibility = Visibility.Visible;
 
+            
             // Start a game round
             GameRound roundOnCountries = new GameRound(player, categoryCountries);
             currentRound = roundOnCountries;
@@ -93,6 +105,10 @@ namespace Hangman_Game
 
         private void CapitalsButton_Click(object sender, RoutedEventArgs e)
         {
+            // Reset the hanging progress
+            hangingProgress = 0;
+
+            
             // Instantiate a new player
             Player player = new Player("TestPlayer");
 
@@ -100,12 +116,14 @@ namespace Hangman_Game
             Category categoryCapitals = new Category();
             categoryCapitals.PopulateWith("capitals.txt");
 
+            
             // Display the elements of player interface
             suggestLetterButton.Visibility = Visibility.Visible;
             letterBox.Visibility = Visibility.Visible;
             suggestWordButton.Visibility = Visibility.Visible;
             wordBox.Visibility = Visibility.Visible;
 
+            
             // Start a game round
             GameRound roundOnCapitals = new GameRound(player, categoryCapitals);
             currentRound = roundOnCapitals;
@@ -125,28 +143,47 @@ namespace Hangman_Game
 
         private void SuggestLetterButton_Click(object sender, RoutedEventArgs e)
         {
-            // Retrieve the suggested letter
-            char suggestedLetter = letterBox.Text[0];
-
-            // If the letter is present in the word...
-            if(currentRound.LetterIsPresent(suggestedLetter))
+            if(letterBox.Text.Length > 0)
             {
-               // update the word scheme
-               currentRound.UpdateSecretWordScheme(suggestedLetter);
-               secretWordBlock.Text = currentRound.GetSecretWordScheme(); 
-            }
+                // Retrieve the suggested letter
+                char suggestedLetter = letterBox.Text[0];
 
-            // If the letter is NOT present in the word...
-            else
-            {
-                // update the Hanging Man
-                hangingProgress = currentRound.GetNumberOfTries();
-                pr.Content = hangingProgress;
+                // If the letter is present in the word...
+                if(currentRound.LetterIsPresent(suggestedLetter))
+                {
+                    // update the word scheme
+                    currentRound.UpdateSecretWordScheme(suggestedLetter);
+                    secretWordBlock.Text = currentRound.GetSecretWordScheme(); 
+                }
 
-                if (hangingProgress <= 12)
-                    hangmanImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/" + hangingProgress + ".jpg"));
+                // If the letter is NOT present in the word...
                 else
-                    pr.Content = "The man has been hanged";
+                {
+                    // update the Hanging Man
+                    hangingProgress++;
+
+                    // progress the hanging process
+                    if (hangingProgress <= 12)
+                        hangmanImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/" + hangingProgress + ".jpg"));
+
+                    // or finish the hanging process
+                    else
+                    {
+                        pr.Content = "The man has been hanged...";
+
+                        // Hide the elements of player interface
+                        suggestLetterButton.Visibility = Visibility.Hidden;
+                        letterBox.Visibility = Visibility.Hidden;
+                        suggestWordButton.Visibility = Visibility.Hidden;
+                        wordBox.Visibility = Visibility.Hidden;
+                    }
+                        
+                }
+
+                // Clean up the text field
+                letterBox.Text = "";
+                
+
             }
             
         }
@@ -155,30 +192,51 @@ namespace Hangman_Game
 
         private void SuggestWordButton_Click(object sender, RoutedEventArgs e)
         {
-            // Retrieve the suggested word
-            string suggestedWord = wordBox.Text;
-
-            // If the suggested word is correct...
-            if(currentRound.IsTheSecretWord(suggestedWord))
+            
+            if(wordBox.Text.Length > 0)
             {
-                // stop the hanging process and save the Hanging Man
-                pr.Content = "The man is saved";
-            }
+                // Retrieve the suggested word
+                string suggestedWord = wordBox.Text;
 
-            // If the word is NOT the word...
-            else
-            {
-                // update the Hanging Man
-                int hangingProgress = currentRound.GetNumberOfTries();
-                pr.Content = hangingProgress;
+                // If the suggested word is correct...
+                if(currentRound.IsTheSecretWord(suggestedWord))
+                {
+                    // stop the hanging process and save the Hanging Man
+                    pr.Content = "The man has been saved!";
+                }
 
-                if (hangingProgress <= 12)
-                    hangmanImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/" + hangingProgress + ".jpg"));
+                // If the word is NOT the word...
                 else
-                    pr.Content = "The man has been hanged";
+                {
+                    // update the Hanging Man
+                    hangingProgress++;
+
+
+                    // progress the hanging process
+                    if (hangingProgress <= 12)
+                        hangmanImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/" + hangingProgress + ".jpg"));
+
+
+                    // or finish the hanging process
+                    else
+                    {
+                        pr.Content = "The man has been hanged...";
+
+                        // Hide the elements of player interface
+                        suggestLetterButton.Visibility = Visibility.Hidden;
+                        letterBox.Visibility = Visibility.Hidden;
+                        suggestWordButton.Visibility = Visibility.Hidden;
+                        wordBox.Visibility = Visibility.Hidden;
+                    }
+                }
+
+
+                // Clean up the text field
+                wordBox.Text = "";
+
             }
+            
         }
 
-        
     }
 }
