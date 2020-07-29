@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:Hangman_Game"
         mc:Ignorable="d"
         Title="Hangman" Height="450" Width="800">
-    <Grid>
+    <Grid Opacity="0.9">
 
         <Grid.Background>
             <ImageBrush ImageSource="/images/bg.jpg"></ImageBrush>
         </Grid.Background>
 
-        <Image x:Name="hangmanImage" HorizontalAlignment="Left" Height="152" VerticalAlignment="Top" Width="165" Margin="453,179,0,0" RenderTransformOrigin="1.891,0.302"/>
+        <Image x:Name="hangmanImage" HorizontalAlignment="Left" Height="138" VerticalAlignment="Top" Width="150" Margin="468,179,0,0" RenderTransformOrigin="1.891,0.302"/>
 
         <Label Content="SECRET WORD: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,106,0,0" FontFamily="Stencil"/>
         <TextBlock x:Name="secretWordBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="351,106,0,0" Height="26" Width="237" FontFamily="Stencil" FontSize="20" FontStretch="ExtraExpanded"/>
@@ -20,7 +20,7 @@
         <Button x:Name="suggestLetterButton" Content="Suggest a letter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,210,0,0" Height="19" Click="SuggestLetterButton_Click" Background="#FFF6EBE1" FontFamily="Stencil" FontSize="11" FontStyle="Italic"/>
         <Button x:Name="suggestWordButton" Content="Suggest a word" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,246,0,0" Height="19" Click="SuggestWordButton_Click" Background="#FFF6EBE1" FontFamily="Stencil" FontStyle="Italic" FontSize="11"/>
 
-        <TextBox x:Name="letterBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" Margin="266,208,0,0" FontFamily="Stencil" FontStyle="Italic" FontSize="11"/>
+        <TextBox x:Name="letterBox" HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" Margin="266,210,0,0" FontFamily="Stencil" FontStyle="Italic" FontSize="11"/>
         <TextBox x:Name="wordBox" HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="176,246,0,0" FontSize="11" FontFamily="Stencil" FontStyle="Italic"/>
 
         <Button x:Name="countriesButton" Content="Play countries" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Margin="305,30,0,0" Height="19" Click="CountriesButton_Click" Background="#FFEED3BA" FontFamily="Stencil">
@@ -42,7 +42,7 @@
         </Button>
 
         <Label x:Name="pr" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,291,0,0" RenderTransformOrigin="1.198,1.677" Width="250"/>
-        
+
         <Label x:Name="l" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="219,129,0,0"/>
     </Grid>
 </Window>
