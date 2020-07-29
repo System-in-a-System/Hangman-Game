@@ -26,19 +26,7 @@ namespace Hangman_Game
         private string secretWordScheme;
 
 
-        /** The number of tries. */
-        private int numberOfTries = 0;
-
-        /** The  score. */
-        private int score = 0;
-
-
-        /** Game round status. */
-        private bool roundIsWon = false;
-
-        /** Game round status. */
-        private bool roundIsLost = false;
-
+        
 
         
         
@@ -94,6 +82,8 @@ namespace Hangman_Game
             SetSecretWordScheme();
         }
 
+
+
 		
 		    
 	
@@ -118,6 +108,11 @@ namespace Hangman_Game
 	    }
 
 
+        /**
+        * Gets the secret word scheme.
+        *
+        * @return the secret word scheme
+        */
         public string GetSecretWord()
         {
             return secretWord;
@@ -125,6 +120,8 @@ namespace Hangman_Game
 	
 	
 	
+
+
 	    /**
 	    * Constructs the secret word scheme.
 	    *
@@ -160,6 +157,7 @@ namespace Hangman_Game
         {
             return secretWordScheme;
         }
+
 
 
 
@@ -225,13 +223,8 @@ namespace Hangman_Game
                     return true;
 
                 // If indexOf returns "-1", the letter is NOT present in the word
-                else
-                {
-                    numberOfTries++;
-                    return false;
-                }
-                    
-                
+                else             
+                    return false;                  
             }
 
             // Catch possible illegal argument exceptions	
@@ -261,19 +254,14 @@ namespace Hangman_Game
                 theWord = theWord.ToUpper();
 
 
-                // If the word corresponds to the secret word
+                // If the word corresponds to the secret word...
                 if (theWord.Equals(secretWord))
-                {
-                    roundIsWon = true;
                     return true;   	
-                }
-            
+                
                 // If the word does not correspond to the secret word
-                else
-                {
-                    numberOfTries++;
+                else      
                     return false;
-                }
+                
             }
 
             // Catch possible Illegal Argument Exceptions
@@ -281,56 +269,6 @@ namespace Hangman_Game
             {
                 throw new ArgumentException("Error: No word has been provided");
             }
-        }
-
-
-
-        /**
-        * Gets the number of tries.
-        *
-        * @return the number of tries
-        */
-        public int GetNumberOfTries()
-        {
-            return numberOfTries;
-        }
-
-
-        
-        /**
-        * Calculates score based on the number of failed tries.
-        *
-        * @return player's score
-        */
-        public int CalculateScore()
-        {
-            if (roundIsWon)
-            {
-                score = ((8 - numberOfTries) * 10) + 20;
-                player.RecordScore(score);
-                return score;
-            }
-
-            else
-            {
-                return 0;
-            }
-
-        }
-
-
-
-        /**
-        * Game round "switcher"
-        *
-        * @return true, if the game round outcome has not yet been established = the round is still on
-        */
-        public bool RoundIsOn()
-        {
-            if (!roundIsWon && !roundIsLost)
-                return true;
-            else
-                return false;
         }
 
     }	

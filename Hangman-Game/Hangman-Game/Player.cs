@@ -11,11 +11,7 @@ namespace Hangman_Game
         /** Player's name. */
         private string name;
 
-        /** Player's score. */
-        private int score = 0;
-
-
-
+        
         /**
          * Instantiates a new player.
          *
@@ -52,30 +48,6 @@ namespace Hangman_Game
                 name = nameInput;
             else
                 name = "Unknown hero";
-        }
-
-
-
-        /**
-         * Records player's score (establishes player-score pair)
-         *
-         * @param theScore = the current score of the current player within the current round
-         */
-        public void RecordScore(int theScore) 
-        {
-			score = theScore;
-        }
-
-
-
-        /**
-	    * Retrieves player's score (established in player-score pair)
-	    *
-	    * @return the int value of the player's score
-	    */
-        public int RetrieveScore()
-        {
-            return score;
         }
     }
 }

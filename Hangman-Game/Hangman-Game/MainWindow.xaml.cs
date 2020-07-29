@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace Hangman_Game
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+    
     public partial class MainWindow : Window
     {
                 
@@ -40,10 +38,15 @@ namespace Hangman_Game
         private void ContinentsButton_Click(object sender, RoutedEventArgs e)
         {
 
+            // Clean up
+            l.Content = "";
+
             // Reset the hanging progress
             hangingProgress = 0;
-            
-            
+            hangmanImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/" + hangingProgress + ".jpg"));
+
+
+
             // Instantiate a new player
             Player player = new Player("TestPlayer");
 
@@ -51,6 +54,7 @@ namespace Hangman_Game
             Category categoryContinents = new Category();
             categoryContinents.PopulateWith("resources/continents.txt");
 
+            
             
             // Display the elements of player interface
             suggestLetterButton.Visibility = Visibility.Visible;
@@ -73,16 +77,22 @@ namespace Hangman_Game
 
         private void CountriesButton_Click(object sender, RoutedEventArgs e)
         {
+            // Clean up
+            l.Content = "";
+
             // Reset the hanging progress
             hangingProgress = 0;
+            hangmanImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/" + hangingProgress + ".jpg"));
 
-            
+
+
             // Instantiate a new player
             Player player = new Player("TestPlayer");
 
             // Instantiate a category
             Category categoryCountries = new Category();
             categoryCountries.PopulateWith("resources/countries.txt");
+
 
             
             // Display the elements of player interface
@@ -105,10 +115,15 @@ namespace Hangman_Game
 
         private void CapitalsButton_Click(object sender, RoutedEventArgs e)
         {
+            // Clean up
+            l.Content = "";
+
             // Reset the hanging progress
             hangingProgress = 0;
+            hangmanImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/" + hangingProgress + ".jpg"));
 
-            
+
+
             // Instantiate a new player
             Player player = new Player("TestPlayer");
 
@@ -117,6 +132,7 @@ namespace Hangman_Game
             categoryCapitals.PopulateWith("resources/capitals.txt");
 
             
+
             // Display the elements of player interface
             suggestLetterButton.Visibility = Visibility.Visible;
             letterBox.Visibility = Visibility.Visible;
@@ -151,22 +167,36 @@ namespace Hangman_Game
                 // If the letter is present in the word...
                 if(currentRound.LetterIsPresent(suggestedLetter))
                 {
-                    // update the word scheme
+                    // Update the word scheme
                     currentRound.UpdateSecretWordScheme(suggestedLetter);
-                    secretWordBlock.Text = currentRound.GetSecretWordScheme(); 
+                    secretWordBlock.Text = currentRound.GetSecretWordScheme();
+
+
+                    // If the secret word has been fully completed... 
+                    if (!secretWordBlock.Text.Contains("."))
+                    {
+                        // Stop the hanging process and save the man
+                        pr.Content = "The man has been saved!";
+
+                        // Hide the elements of player interface
+                        suggestLetterButton.Visibility = Visibility.Hidden;
+                        letterBox.Visibility = Visibility.Hidden;
+                        suggestWordButton.Visibility = Visibility.Hidden;
+                        wordBox.Visibility = Visibility.Hidden;
+                    }
                 }
 
                 // If the letter is NOT present in the word...
                 else
                 {
-                    // update the Hanging Man
+                    // Update the Hanging Man
                     hangingProgress++;
 
-                    // progress the hanging process
+                    // Progress the hanging process
                     if (hangingProgress <= 12)
                         hangmanImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/" + hangingProgress + ".jpg"));
 
-                    // or finish the hanging process
+                    // Or finish the hanging process
                     else
                     {
                         pr.Content = "The man has been hanged...";
@@ -205,7 +235,7 @@ namespace Hangman_Game
                 // If the suggested word is correct...
                 if(currentRound.IsTheSecretWord(suggestedWord))
                 {
-                    // stop the hanging process and save the Hanging Man
+                    // Stop the hanging process and save the man
                     pr.Content = "The man has been saved!";
 
                     // Display the word on the board
@@ -221,16 +251,16 @@ namespace Hangman_Game
                 // If the word is NOT the word...
                 else
                 {
-                    // update the Hanging Man
+                    // Update the Hanging Man
                     hangingProgress++;
 
 
-                    // progress the hanging process
+                    // Progress the hanging process
                     if (hangingProgress <= 12)
                         hangmanImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/" + hangingProgress + ".jpg"));
 
 
-                    // or finish the hanging process
+                    // Or finish the hanging process
                     else
                     {
                         pr.Content = "The man has been hanged...";
